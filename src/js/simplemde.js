@@ -634,11 +634,11 @@ function drawLink(editor) {
 /**
  * Action for drawing an img.
  */
-function drawImage(editor) {
+function drawImage(editor, url = 'http://') {
 	var cm = editor.codemirror;
 	var stat = getState(cm);
 	var options = editor.options;
-	var url = "http://";
+	// var url = "http://";
 	if(options.promptURLs) {
 		url = prompt(options.promptTexts.image);
 		if(!url) {
@@ -1486,6 +1486,7 @@ SimpleMDE.prototype.render = function(el) {
 	this.codemirror = CodeMirror.fromTextArea(el, {
 		mode: mode,
 		backdrop: backdrop,
+		dragDrop: false,
 		theme: "paper",
 		tabSize: (options.tabSize != undefined) ? options.tabSize : 2,
 		indentUnit: (options.tabSize != undefined) ? options.tabSize : 2,
@@ -1951,8 +1952,8 @@ SimpleMDE.prototype.cleanBlock = function() {
 SimpleMDE.prototype.drawLink = function() {
 	drawLink(this);
 };
-SimpleMDE.prototype.drawImage = function() {
-	drawImage(this);
+SimpleMDE.prototype.drawImage = function(url) {
+	drawImage(this, url);
 };
 SimpleMDE.prototype.drawTable = function() {
 	drawTable(this);
