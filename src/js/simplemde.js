@@ -621,7 +621,7 @@ function drawLink(editor) {
 	var cm = editor.codemirror;
 	var stat = getState(cm);
 	var options = editor.options;
-	var url = "http://";
+	var url = "https://";
 	if(options.promptURLs) {
 		url = prompt(options.promptTexts.link);
 		if(!url) {
